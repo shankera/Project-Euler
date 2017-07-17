@@ -1,9 +1,14 @@
 import java.util.ArrayList;
+public class Problem010 {
+    public static void main(String[] args) {
+        ArrayList<Integer> primes = generate(2000000);
+        long sum = 0;
+        for(int x = 0; x < primes.size(); x++){
+            sum += primes.get(x);
+        }
+        System.out.println(sum);
+    }
 
-/*  I thought this would be useful, but turns out that this can't even be easily
- *  adapted to use longs. So much for that.
- */
-public class SieveOfEratosthenes {
     public static ArrayList<Integer> generate(int num){
         double upperBound = Math.ceil(Math.sqrt((double) num));
         boolean[] numbers = new boolean[num+1];
@@ -19,7 +24,7 @@ public class SieveOfEratosthenes {
         }
 
         ArrayList<Integer> primes = new ArrayList<Integer>();
-        for (int x = 2; x <= num; x++){
+        for (int x = 2; x < num; x++){
             if (!numbers[x]){
                 primes.add(x);
             }
